@@ -12,7 +12,8 @@ import groovy.json.JsonSlurper
 
 metadata {
     definition (name: "Airfoil Speaker Control", namespace: "ra", author: "rob121") {
-	    capability "AudioVolume"
+	capability "AudioVolume"
+	capability "Switch Level"
         capability "Switch"
         capability "Refresh"
     }
@@ -24,13 +25,15 @@ preferences {
     input("host", "text", title: "URL", description: "The URL of your server running airfoil server ")
     input("port", "text", title: "Port", description: "The server port.")
 	
-	if(settings!=null){
+
 		
-	
-        input("speakerid", "enum", title: "Speaker ID", description: "Add url/port then save for options", multiple: false, required: false, options: getSpeakers())
-		
-	    
+	try{
+       input("speakerid", "enum", title: "Speaker ID", description: "Add url/port then save for options", multiple: false, required: false, options: getSpeakers())
+	}catch(e){
+	log.debug "Unable to render speakerid - possible network issue"
 	}	
+	    
+	
 	
 
 } 
@@ -305,7 +308,11 @@ def volumeDown(){
 
 
 }
+def setLevel(level){
 
+   setVolume(level)
+
+}
 def setVolume(level){
 	
   def volume = level / 100	
