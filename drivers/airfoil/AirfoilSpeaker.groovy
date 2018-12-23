@@ -12,8 +12,9 @@ import groovy.json.JsonSlurper
 
 metadata {
     definition (name: "Airfoil Speaker Control", namespace: "ra", author: "rob121") {
-	capability "AudioVolume"
-	capability "Switch Level"
+	    capability "AudioVolume"
+		capability "Audio Volume"
+		capability "SwitchLevel"
         capability "Switch"
         capability "Refresh"
     }
@@ -321,7 +322,11 @@ def setVolume(level){
   log.debug "Set Volume for ${settings.speakerid}"
   log.debug "${volume}"
 	
- 
+  if(state.volume==0){
+	off()
+  }else if(state.connected==false){
+	on()  
+  }	  
 		
   def paramsforPost = [
     	uri: "http://${settings.host}:${settings.port}",
