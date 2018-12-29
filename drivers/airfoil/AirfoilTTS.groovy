@@ -1,7 +1,7 @@
 /**
  *  Airfoil TTS
  *
- *  Copyright 2018 Daniel Ogorchock
+ *  Copyright 2018 Rob Alfonso
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  *  in compliance with the License. You may obtain a copy of the License at:
