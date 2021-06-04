@@ -1,0 +1,23 @@
+{
+  "packageName": "Broadlinkgo Drivers",
+  "author": "Rob Alfonso",
+  "version": "1.0",
+  "minimumHEVersion": "2.2.6",
+  "dateReleased": "2021-06-04",
+  "drivers": [
+    {
+      "id": "46bc868c-995a-4ced-9fdb-bfec3476f821",
+      "name": "Broadlinkgo Parent v2",
+      "namespace": "ra",
+      "location": "https://raw.githubusercontent.com/rob121/hubitat/master/drivers/broadlinkgo/parent.groovy",
+      "required": true
+    },
+    {
+      "id": "4319e01c-b04c-4960-b1d1-5dd471bcf84f",
+      "name": "Broadlinkgo Child",
+      "namespace": "ra",
+      "location": "https://raw.githubusercontent.com/rob121/hubitat/master/drivers/broadlinkgo/child.groovy",
+      "required": true
+    }
+  ]
+}
