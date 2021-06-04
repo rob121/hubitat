@@ -1,0 +1,36 @@
+{
+  "author": "Rob Alfonso",
+  "gitHubUrl": "https://github.com/rob121",
+  "packages": [
+    {
+      "id": "475496e8-ad15-4a2b-9a79-77ea0b6523c8",
+      "name": "HTTP Button Pad Driver",
+      "category": "Control",
+      "location": "https://raw.githubusercontent.com/rob121/hubitat/master/drivers/httpbuttonpad/packageManifest.json",
+      "description": "HTTP Url's on a multi button virtual device",
+      "tags": [
+        "Buttons"
+      ]
+    },
+    {
+      "id": "c5866e67-e888-4ece-9f1c-703032bd4a06",
+      "name": "Broadlinkgo Multi Device System",
+      "category": "Control",
+      "location": "https://raw.githubusercontent.com/rob121/hubitat/master/drivers/broadlinkgo/packageManifest.json",
+      "description": "Populate all your commands as button devices from the broadlinkgo system",
+      "tags": [
+        "IR & RF"
+      ]
+    },
+    {
+      "id": "86a6a243-0c93-4a1f-be47-461d23d96f41",
+      "name": "Airfoil Drivers",
+      "category": "Control",
+      "location": "https://raw.githubusercontent.com/rob121/hubitat/master/drivers/airfoil/packageManifest.json",
+      "description": "Speaker Drivers for the Airfoil Api",
+      "tags": [
+        "Speakers"
+      ]
+    }
+  ]
+}
