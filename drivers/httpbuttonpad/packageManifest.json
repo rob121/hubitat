@@ -1,0 +1,16 @@
+{
+  "packageName": "HTTP Button Pad Driver",
+  "author": "Rob Alfonso",
+  "version": "1.0",
+  "minimumHEVersion": "2.2.6",
+  "dateReleased": "2021-06-04",
+  "drivers": [
+    {
+      "id": "4a4b2390-72bf-43ee-9960-2a028ba8453f",
+      "name": "Http Button Pad",
+      "namespace": "ra",
+      "location": "https://raw.githubusercontent.com/rob121/hubitat/master/drivers/httpbuttonpad/buttonpad.groovy",
+      "required": true
+    }
+  ]
+}
