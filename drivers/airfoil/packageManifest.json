@@ -1,0 +1,23 @@
+{
+  "packageName": "Airfoil Drivers",
+  "author": "Rob Alfonso",
+  "version": "1.0",
+  "minimumHEVersion": "2.2.6",
+  "dateReleased": "2021-06-04",
+  "drivers": [
+    {
+      "id": "83f10c2e-3e39-49cf-a38b-cec37da55dc8",
+      "name": "Airfoil Speaker Control",
+      "namespace": "ra",
+      "location": "https://raw.githubusercontent.com/rob121/hubitat/master/drivers/airfoil/AirfoilSpeaker.groovy",
+      "required": true
+    },
+    {
+      "id": "891c1003-784a-4c6f-a3e4-f902359f74cf",
+      "name": "Airfoil TTS",
+      "namespace": "ra",
+      "location": "https://raw.githubusercontent.com/rob121/hubitat/master/drivers/airfoil/AirfoilTTS.groovy",
+      "required": true
+    }
+  ]
+}
