@@ -124,8 +124,10 @@ def createChildren()
             resp.data.payload.remotes.each {
                 it.Buttons.each{ 
                    but ->
+                   if(but.Label?.trim()){ 
                    logDebug("Creating Remote: Name:${it.Label} Device:${it.Device} Cmd: ${but.Command} Label: ${but.Label}")
                    createChild("${it.Label}","${it.Device}","${but.Command}","${but.Label}")
+                   }   
                 }   
             }
             
