@@ -102,7 +102,7 @@ def configure()
 def createChild(String remote, String macAddr, String command,String label)
 {
     logDebug("Broadlinkgo Parent: createChild(${command} on device ${macAddr})")
-    def childDev = addChildDevice("ra", "Broadlinkgo Child", "${remote}-${label}", [label:"${remote}-${label}", isComponent:true, name:"${remote}-${label}"])
+    def childDev = addChildDevice("ra", "Broadlinkgo Child", "${remote}-${label}", [label:"${remote} Remote - ${label}", isComponent:true, name:"Broadlinkgo Remote Device"])
     
     // update URI settings for switch, storing in both "on" and "off" so that "toggle" will have the intended effect regardless
     childDev.updateSetting("onPress", "${broadlinkgo_cmdmsg(command)}")
@@ -128,7 +128,8 @@ def createChildren()
                    logDebug("Creating Remote: Name:${it.Label} Device:${it.Device} Cmd: ${but.Command} Label: ${but.Label}")
                    createChild("${it.Label}","${it.Device}","${but.Command}","${but.Label}")
                    }   
-                }   
+                }
+                    
             }
             
             }
