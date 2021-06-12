@@ -9,7 +9,10 @@ metadata {
         capability "Actuator"
         capability "PushableButton"
         capability "Sensor"
+        capability "Switch"
         command "push"
+        command "on"
+        command "off"
   
     }
 }
