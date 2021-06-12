@@ -69,7 +69,7 @@ def updated()
 	logDebug("broadlinkgo parent: updated")
     // assume that the broadlinkgo server was changed if preferences were updated
     // so, nuke it and start over
-    reset()
+    //reset()
     configure()
 }
 
@@ -89,7 +89,7 @@ def reset()
     }
     
     state.clear()
-    clearMacroList()
+   
 }
 
 def configure()
@@ -101,12 +101,26 @@ def configure()
 
 def createChild(String remote, String macAddr, String command,String label)
 {
-    logDebug("Broadlinkgo Parent: createChild(${command} on device ${macAddr})")
-    def childDev = addChildDevice("ra", "Broadlinkgo Child", "${remote.replaceAll("\\s","").replaceAll("/[^A-Za-z0-9]/", "").toLowerCase()}-${label.replaceAll("\\s","").replaceAll("/[^A-Za-z0-9]/", "").toLowerCase()}", [label:"${remote} Remote - ${label}", isComponent:true, name:"Broadlinkgo Remote Command"])
+    logDebug("Broadlinkgo Parent: createChild(${remote}-${label})")
     
-    // update URI settings for switch, storing in both "on" and "off" so that "toggle" will have the intended effect regardless
-    childDev.updateSetting("onPress", "${broadlinkgo_cmdmsg(command)}")
-    childDev.updateSetting("logEnable", false)
+    def clabel = "${remote} Remote - ${label}"
+    
+    def nid = "${command.bytes.encodeBase64().toString()}"
+    
+    logDebug("Broadlinkgo Parent: Network ID: ${nid}")
+    
+    def cd = getChildDevice("${nid}")
+    
+    if (!cd) {
+        cd = addChildDevice("ra", "Broadlinkgo Child", "${nid}", [label:"${clabel}", isComponent:false, name:"Broadlinkgo Remote Command"])
+        // update URI settings for switch, storing in both "on" and "off" so that "toggle" will have the intended effect regardless
+        cd.updateSetting("onPress", "${broadlinkgo_cmdmsg(command)}")
+        cd.updateSetting("logEnable", false)
+    }else{
+       logDebug("Device found ${command} updating label...")
+       cd.setLabel("${clabel}")
+    }
+    
 }
 
 def createChildren()
@@ -125,7 +139,7 @@ def createChildren()
                 it.Buttons.each{ 
                    but ->
                    if(but.Label?.trim()){ 
-                   logDebug("Creating Remote: Name:${it.Label} Device:${it.Device} Cmd: ${but.Command} Label: ${but.Label}")
+                //   logDebug("Creating Remote: Name:${it.Label} Device:${it.Device} Cmd: ${but.Command} Label: ${but.Label}")
                    createChild("${it.Label}","${it.Device}","${but.Command}","${but.Label}")
                    }   
                 }
@@ -144,7 +158,6 @@ def createChildren()
 
 
 
-
 private broadlinkgo_IPandPort()
 {
     return "${settings.broadlinkgoIP}:${settings.broadlinkgoPort}"
@@ -159,4 +172,3 @@ private broadlinkgo_cmdmsg(String command)
 {
     return "http://" + "${broadlinkgo_IPandPort()}" + "${command}"
 }
-
